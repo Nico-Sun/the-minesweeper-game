@@ -15,19 +15,25 @@
             margin: 0 auto;
             border-radius: 8px;
             background-color: blanchedalmond;
+            box-shadow: 0 0 10px #cccccc;
         }
         #box{
             margin: 20px auto;
             display: flex;
             flex-wrap: wrap;
             background-color: blanchedalmond;
+            border-radius: 5px;
+            box-shadow: 0 0 10px #aaaaaa;
+            padding: 3px;
+            border: 2px blueviolet solid;
+            opacity: 0;
         }
         .cell{
             width: 48px;
             height: 48px;
             line-height: 48px;
             text-align: center;
-            border: 1px red solid;
+            border: 1px blueviolet solid;
         }
         h1{
             text-align: center;
@@ -59,6 +65,7 @@
             background-color: #66ccff;
             color: white;
             cursor: pointer;
+            box-shadow: 0 0 5px royalblue;
         }
         .rule{
             font-size: 14px;
@@ -112,6 +119,7 @@
             }else if(mineCount < 1 || mineCount > Math.ceil(row * col * 0.25)){
                 alert("雷数设置不合理，请重新输入！(雷数最多为总格数的25%)");
             }else{
+                box.style.opacity = 1;
                 box.innerHTML = "";//清除旧的地图
                 // 随机生成地雷的索引
                 for (let i = 0; ; i++) {
@@ -263,6 +271,9 @@
                                     cell.innerText = "💣";
                                     alert("你输啦!");
                                     gameOverInfoEle.innerText = "很遗憾，你输啦！";
+                                    if(gameOverInfoEle.classList.contains("green")){
+                                        gameOverInfoEle.classList.remove("green");
+                                    }
                                     gameOverInfoEle.classList.add("red");
                                     gameOver();
                                 }else{
@@ -270,6 +281,9 @@
                                     if (isWin()){
                                         alert("恭喜你，你赢啦!");
                                         gameOverInfoEle.innerText = "恭喜你，你赢啦!";
+                                        if(gameOverInfoEle.classList.contains("red")){
+                                            gameOverInfoEle.classList.remove("red");
+                                        }
                                         gameOverInfoEle.classList.add("green");
                                         gameOver();
                                     }
@@ -281,6 +295,9 @@
                                     if (isWin()){
                                         alert("恭喜你，你赢啦!");
                                         gameOverInfoEle.innerText = "恭喜你，你赢啦!";
+                                        if(gameOverInfoEle.classList.contains("red")){
+                                            gameOverInfoEle.classList.remove("red");
+                                        }
                                         gameOverInfoEle.classList.add("green");
                                         gameOver();
                                     }
