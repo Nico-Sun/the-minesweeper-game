@@ -116,6 +116,8 @@
                 alert("行数不得小于3行，请重新输入！");
             }else if(col < 3){
                 alert("列数不得小于3行，请重新输入！");
+            }else if(row != col){
+                alert("行数和列数要相同，请重新输入！");
             }else if(mineCount < 1 || mineCount > Math.ceil(row * col * 0.25)){
                 alert("雷数设置不合理，请重新输入！(雷数最多为总格数的25%)");
             }else{
