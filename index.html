@@ -292,6 +292,7 @@
                             }else if(e.button == 2){
                                 if (cell.innerText == ""){
                                     cell.innerText = "🚩";
+                                    cell.style.backgroundColor = "#ffff00";
                                     if (isWin()){
                                         alert("恭喜你，你赢啦!");
                                         gameOverInfoEle.innerText = "恭喜你，你赢啦!";
@@ -306,6 +307,7 @@
                             }else if(e.button == 1){
                                 if (cell.innerText == "🚩"){
                                     cell.innerText = "";
+                                    cell.style.backgroundColor = "transparent";
                                 }
                             }
                         }
