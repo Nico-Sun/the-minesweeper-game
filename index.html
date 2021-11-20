@@ -10,7 +10,7 @@
             text-align: center;
         }
         .form{
-            width: 300px;
+            width: 320px;
             padding: 10px 20px 30px;
             margin: 0 auto;
             border-radius: 8px;
@@ -40,7 +40,7 @@
         }
         .inputMsg{
             margin: 20px auto 10px;
-            width: 261px;
+            width: 300px;
             text-align: center;
             display: flex;
             flex-wrap: wrap;
@@ -48,8 +48,12 @@
         .inputMsg label{
             margin-bottom: 15px;
         }
+        #mine{
+            position: relative;
+            left: 2px;
+        }
         input{
-            width: 160px;
+            width: 180px;
             height: 25px;
             background-color: #66ccff;
             border: none;
@@ -58,7 +62,7 @@
             outline: none;
         }
         #getForm{
-            width: 260px;
+            width: 300px;
             height: 40px;
             border: none;
             border-radius: 5px;
@@ -86,9 +90,8 @@
     <div class="form">
         <h1>扫雷</h1>
         <div class="inputMsg">
-            <label for="row">请输入行数：<input id="row" type="text"></label>
-            <label for="col">请输入列数：<input id="col" type="text"></label>
-            <label for="mine">请输入雷数：<input id="mine" type="text"></label>
+            <label for="row">请输入行列数：<input id="row" type="text" placeholder="如输入10，即为10X10格"></label>
+            <label for="mine">请输入雷数：&nbsp;&nbsp;&nbsp;<input id="mine" type="text"></label>
         </div>
         <button id="getForm">生成地图</button>
     </div>
@@ -102,22 +105,17 @@
         };
         let box = document.querySelector("#box");
         let rowEle = document.querySelector("#row");
-        let colEle = document.querySelector("#col");
         let mineEle = document.querySelector("#mine");
         let getFormBtn = document.querySelector("#getForm");
         let gameOverInfoEle = document.querySelector("#gameOverInfo");
         getFormBtn.onclick = function () {
             let row = rowEle.value;//地图行数
-            let col = colEle.value;//地图列数
+            let col = rowEle.value;//地图列数
             let mineCount = mineEle.value;//地雷个数
             gameOverInfoEle.innerText = "​";
             let a = [];//用来储存随机生成的地雷的索引
             if(row < 3){
-                alert("行数不得小于3行，请重新输入！");
-            }else if(col < 3){
-                alert("列数不得小于3行，请重新输入！");
-            }else if(row != col){
-                alert("行数和列数要相同，请重新输入！");
+                alert("行/列数不得小于3，请重新输入！");
             }else if(mineCount < 1 || mineCount > Math.ceil(row * col * 0.25)){
                 alert("雷数设置不合理，请重新输入！(雷数最多为总格数的25%)");
             }else{
